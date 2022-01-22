@@ -1,20 +1,33 @@
 import './App.css';
 import styles from './App.css';
-
+import { Route, Routes } from 'react-router-dom';
+import AppBar from './components/AppBar/AppBar';
 import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import HomePage from './components/HomePage/HomePage';
 // import Searchbar from './components/Searchbar/Searchbar';
 // import Loader from 'react-loader-spinner';
 // import searchApi from './services/api';
 // import ImageGallery from './components/ImageGallery/ImageGallery';
 // import Button from './components/Button/Button';
 // import Modal from './components/Modal/Modal';
-import Navigation from './components/Navigation/Navigation';
+
 export default function App() {
-  return <Navigation />;
+  return (
+    <>
+      <AppBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </>
+  );
 }
+
+// export default function App() {
+
+//   return <Navigation />;
+// }
 
 // export default function App() {
 //   // const [searchName, setSearchName] = useState('');

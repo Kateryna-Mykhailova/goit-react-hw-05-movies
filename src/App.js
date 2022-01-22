@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import HomePage from './components/HomePage/HomePage';
 // import Searchbar from './components/Searchbar/Searchbar';
 // import Loader from 'react-loader-spinner';
-// import searchApi from './services/api';
+import searchApi from './services/api';
 // import ImageGallery from './components/ImageGallery/ImageGallery';
 // import Button from './components/Button/Button';
 // import Modal from './components/Modal/Modal';
@@ -22,12 +22,23 @@ export default function App() {
       </Routes>
     </>
   );
+  // const [searchInfo, setSearchInfo] = useState([]);
+
+  // return (
+
+  //   useEffect(() => {
+
+  //     searchApi
+  //       .fetchImage()
+  //       .then(data =>{setSearchInfo(prevState => [data.results])}
+  //         // console.log(data.results)
+  //       )
+  //       // .catch(error => error.message);
+  //     return;
+  //   }, []),
+
+  // );
 }
-
-// export default function App() {
-
-//   return <Navigation />;
-// }
 
 // export default function App() {
 //   // const [searchName, setSearchName] = useState('');

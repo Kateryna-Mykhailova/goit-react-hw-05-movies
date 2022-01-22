@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import styles from '../Navigation/Navigation.module.css';
 
 const Navigation = () => (
+
+
     <nav>
 
         <NavLink to='/'
@@ -33,7 +35,8 @@ const Navigation = () => (
         </NavLink>
         {/* <Link to='/'>Home</Link>
         <Link to='/movies'>Movies</Link> */}
-    </nav>
+  </nav>
+  
 );
 
 export default Navigation;

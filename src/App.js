@@ -5,7 +5,13 @@ import AppBar from './components/AppBar/AppBar';
 import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import HomePage from './components/HomePage/HomePage';
+import HomePage from './views/HomePage/HomePage';
+import Cast from './views/Cast/Cast';
+import MovieDetailsPage from './views/MovieDetailsPage/MovieDetailsPage';
+import MoviesPage from './views/MoviesPage/MoviesPage';
+import NotFoundPage from './views/MovieDetailsPage/MovieDetailsPage';
+import Reviews from './views/Reviews/Reviews';
+
 // import Searchbar from './components/Searchbar/Searchbar';
 // import Loader from 'react-loader-spinner';
 import searchApi from './services/api';
@@ -19,6 +25,8 @@ export default function App() {
       <AppBar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/movies" element={<MoviesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>
   );

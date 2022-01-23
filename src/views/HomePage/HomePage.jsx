@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from 'react';
 import searchApi from '../../services/api'
-import MoviesList from '../MoviesList/MoviesList'
+
+import MoviesList from '../../components/MoviesList/MoviesList';
 export default function HomePage ()  {
 
 

@@ -28,9 +28,25 @@ function fetchMovieDetails(movieId) {
   });
 }
 
+function fetchReviews(movieId) {
+  // console.log(page);
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=30d28e0664c735075082dfc414f074e3&language=en-US&page=1`,
+  ).then(response => {
+    if (response.ok) {
+      return response.json();
+      // console.log(response.json());
+    }
+    // return Promise.reject(
+    //   new Error(`There is no information for this query`),
+    // );
+  });
+}
+
 const api = {
   fetchMovies,
   fetchMovieDetails,
+  fetchReviews,
 };
 
 export default api;

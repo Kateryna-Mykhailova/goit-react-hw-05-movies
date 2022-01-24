@@ -1,11 +1,11 @@
 
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink, Link, Outlet } from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
 import searchApi from '../../services/api'
 
 export default function MovieDetailsPage() {
-    const [movieDetails, setMovieDetails] = useState([])
+    const [movieDetails, setMovieDetails] = useState(null)
     
     const { movieId } = useParams();
 useEffect(() => {
@@ -33,16 +33,59 @@ useEffect(() => {
       return;
     }, [movieId])
 
-
+// console.log(movieDetails);
 
     return (
-
-
-      <main style={{ padding: "1rem" }}>
-            <p>{`${movieId}`}</p>
-</main>
-         
-       
+    <>
+        {movieDetails && (   <div >
+            <img  src={movieDetails.src} alt={movieDetails.title} />
+            <div >
+              <h2 >{movieDetails.title}</h2>
+              <h3 >User Score</h3>
+              <p>{movieDetails.score}</p>
+              <h3>Overview</h3>
+              <p>{movieDetails.overview}</p>
+              <h3 >Genres</h3>
+              <ul>
+                {movieDetails.genres.map(genre => (
+                  <li key={genre.id}>{genre.name}</li>
+                ))} 
+              </ul>
+            </div>
+            </div>)}
+            <nav>
+                <ul>
+                    <li><Link
+                    to={`/movies/${movieId}/cast`}
+                    key={movieId}
+                >Cast </Link></li>
+                    <li><Link
+                    to={`/movies/${movieId}/reviews`}
+                    key={movieId}
+                >Reviews </Link></li>
+                    <Outlet/>
+                </ul>
+    
+                
+                
+      {/* <NavLink
+              to={{ 
+                pathname:,
+                state: {
+                  from: history.location.state.from,
+                  label: "back to movies from cast",
+                },
+              }}
+         style={({ isActive }) => {
+               return {
+               display: "block",
+               margin: "1rem 0",
+              color: isActive ? "red" : "" }}}
+            >Cast</NavLink> */}
+                
+                
+      </nav>
+        </>
     )
 }
  

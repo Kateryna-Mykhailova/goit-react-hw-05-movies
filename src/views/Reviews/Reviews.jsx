@@ -1,9 +1,7 @@
 
 import { useParams, NavLink, Link, Outlet } from 'react-router-dom';
-
 import React, { useState, useEffect } from 'react';
 import searchApi from '../../services/api'
-import { toast } from 'react-toastify';
 export default function Reviews() {
     const [reviews, setReviews] = useState(null)
     const [error, setError] = useState(null);

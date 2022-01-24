@@ -41,12 +41,12 @@ export default function Reviews() {
                 <p>Author: {author}</p>
                 <p>{content}</p>
               </li>)}
-            </ul>) : (<p></p>)
+            </ul>) : (<p>There are no reviews for this movie </p>)
         }
        
 
         </div>
-        // <p>bhjjkkjh</p>
+       
     )
 }
      

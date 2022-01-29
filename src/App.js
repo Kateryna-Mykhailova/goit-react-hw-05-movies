@@ -12,23 +12,30 @@ import 'react-toastify/dist/ReactToastify.css';
 // import NotFoundPage from './views/MovieDetailsPage/MovieDetailsPage';
 // import Reviews from './views/Reviews/Reviews';
 
-const HomePage = lazy(() => import('./views/HomePage/HomePage.jsx'));
-const Cast = lazy(() => import('./views/Cast/Cast.jsx'));
+const HomePage = lazy(() =>
+  import('./views/HomePage/HomePage.jsx' /* webpackChunkName: "home-page" */),
+);
+const Cast = lazy(() =>
+  import('./views/Cast/Cast.jsx' /* webpackChunkName: "cast-page" */),
+);
 const MovieDetailsPage = lazy(() =>
-  import('./views/MovieDetailsPage/MovieDetailsPage.jsx'),
+  import(
+    './views/MovieDetailsPage/MovieDetailsPage.jsx' /* webpackChunkName: "movie-details-page" */
+  ),
 );
 const NotFoundPage = lazy(() =>
-  import('./views/NotFoundPage/NotFoundPage.jsx'),
+  import(
+    './views/NotFoundPage/NotFoundPage.jsx' /* webpackChunkName: "not-found-page" */
+  ),
 );
-const MoviesPage = lazy(() => import('./views/MoviesPage/MoviesPage.jsx'));
-const Reviews = lazy(() => import('./views/Reviews/Reviews.jsx'));
-
-// import Searchbar from './components/Searchbar/Searchbar';
-// import Loader from 'react-loader-spinner';
-
-// import ImageGallery from './components/ImageGallery/ImageGallery';
-// import Button from './components/Button/Button';
-// import Modal from './components/Modal/Modal';
+const MoviesPage = lazy(() =>
+  import(
+    './views/MoviesPage/MoviesPage.jsx' /* webpackChunkName: "movies-page" */
+  ),
+);
+const Reviews = lazy(() =>
+  import('./views/Reviews/Reviews.jsx' /* webpackChunkName: "reviews-page" */),
+);
 
 export default function App() {
   return (

@@ -1,12 +1,14 @@
 
-import { useParams, NavLink, Link, Outlet } from 'react-router-dom';
+import { useParams, NavLink, Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
 import searchApi from '../../services/api'
 
 export default function MovieDetailsPage() {
     const [movieDetails, setMovieDetails] = useState(null)
-    
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
     const { movieId } = useParams();
 useEffect(() => {
 
@@ -34,10 +36,14 @@ useEffect(() => {
     }, [movieId])
 
 // console.log(movieDetails);
-
+  const onGoBack = () => {
+  navigate(-1)
+}
     return (
-    <>
-        {movieDetails && (   <div >
+      <>
+        
+        {movieDetails && (<div >
+          <button type='button' onClick={onGoBack}>Go Back</button>
             <img  src={movieDetails.src} alt={movieDetails.title} />
             <div >
               <h2 >{movieDetails.title}</h2>

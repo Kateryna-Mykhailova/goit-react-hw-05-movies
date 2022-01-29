@@ -36,9 +36,11 @@ useEffect(() => {
     }, [movieId])
 
 // console.log(movieDetails);
-  const onGoBack = () => {
-  navigate(-1)
-}
+  const onGoBack = () =>{
+      location?.state?.from ? navigate(-1) : navigate("/")
+  }
+
+  
     return (
       <>
         

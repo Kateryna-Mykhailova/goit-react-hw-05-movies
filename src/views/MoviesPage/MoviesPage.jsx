@@ -8,92 +8,128 @@ import MoviesList from '../../components/MoviesList/MoviesList'
 
 export default function MoviesPage() {
  const [movies, setMovies] = useState([]);
-    const [error, setError] = useState(null);
-     const [searchQuery, setSearchQuery] = useState("");
+ const [error, setError] = useState(null);
+ const [searchQuery, setSearchQuery] = useState("");
  const location = useLocation();
  const navigation = useNavigate();
-    
+ const query = new URLSearchParams(location.search).get("query") ?? "";
+  
 
-//     let setSearchQuery = (query) => {
-//         navigation({ ...location, search: `query=${query}` })
-//     };
-    
+    const onSubmit = (searchQuery) => {
+        navigation({ ...location, search: `query=${searchQuery}` })
+        console.log(location);
+    };
+    // let onSubmit = (searchQuery) = {
+    //     navigation({ ...location, search: `query=${query}` })
+    // }
 
   useEffect(() => {
-   const query = new URLSearchParams(location.search).get("query") ?? "";
-      if(query){
+   
+      if (!query) return;
         searchApi
             .fetchSearchMovie(query)
             .then(({ results }) => {
-                console.log(results);
+                // console.log(results);
                 // if (results.length === 0) {
                 //     setError(`No results were found for ${query}!`);
                 //     return;
                 // }
-                // setMovies(results);
+                setMovies(results);
                 // setSearchQuery(query)
             })
             .catch(error => setError(error.message))
         
-      }
-  }, [location.search]);
+      }, [query]);
     
     
     
-    const onChangeQuery = (newQuery) => {
-        console.log(newQuery);
-    if (searchQuery === newQuery) {
-      return;
-    }
-
-    if (!searchQuery) return;
-
-   searchApi
-      .fetchSearchMovie(newQuery)
-       .then(({ results }) => {
-          console.log(results);
-        if (results.length === 0) {
-          setError(`No results were found for ${searchQuery}!`);
-         
-          return;
-        }
-        setMovies(results);
-       
-      })
-      .catch((error) => {
-        setError(error);
-       
-      });
-    setSearchQuery(newQuery);
-    setError(null);
-   
-  };
-
-  const moviesListNotEmpty = movies.length !== 0;
-
   return (
     <>
       <SearchBar
-        onSubmit={onChangeQuery}
-        query={searchQuery}
-        changeQuery={setSearchQuery}
+        
+        onSubmit={onSubmit}
       />
-     { moviesListNotEmpty && (
+     { movies && (
           <MoviesList movies={movies} />
       )}
-     
-      
     </>
   );
-   
 }
+
+// export default function MoviesPage() {
+//  const [movies, setMovies] = useState([]);
+//     const [error, setError] = useState(null);
+//      const [searchQuery, setSearchQuery] = useState("");
+//  const location = useLocation();
+//  const navigation = useNavigate();
+    
+
+// //     let setSearchQuery = (query) => {
+// //         navigation({ ...location, search: `query=${query}` })
+// //     };
+    
+
+//   useEffect(() => {
+//    const query = new URLSearchParams(location.search).get("query") ?? "";
+//       if(query){
+//         searchApi
+//             .fetchSearchMovie(query)
+//             .then(({ results }) => {
+//                 console.log(results);
+//                 // if (results.length === 0) {
+//                 //     setError(`No results were found for ${query}!`);
+//                 //     return;
+//                 // }
+//                 // setMovies(results);
+//                 // setSearchQuery(query)
+//             })
+//             .catch(error => setError(error.message))
+        
+//       }
+//   }, [location.search]);
     
     
-//     return (
-//       <main style={{ padding: "1rem" }}>
-//           <p>MoviesPage</p>
-// </main>
+//     const onChangeQuery = (newQuery) => {
+//         console.log(newQuery);
+//     if (searchQuery === newQuery) {
+//       return;
+//     }
+//     if (!searchQuery) return;
+
+//    searchApi
+//       .fetchSearchMovie(newQuery)
+//        .then(({ results }) => {
+//           console.log(results);
+//         if (results.length === 0) {
+//           setError(`No results were found for ${searchQuery}!`);
          
+//           return;
+//         }
+//         setMovies(results);
        
-    // )
+//       })
+//       .catch((error) => {
+//         setError(error);
+       
+//       });
+//     setSearchQuery(newQuery);
+//     setError(null);
+   
+//   };
+
+//   const moviesListNotEmpty = movies.length !== 0;
+
+//   return (
+//     <>
+//       <SearchBar
+//         onSubmit={onChangeQuery}
+//         query={searchQuery}
+//         changeQuery={setSearchQuery}
+//       />
+//      { moviesListNotEmpty && (
+//           <MoviesList movies={movies} />
+//       )}
+//     </>
+//   );
 // }
+    

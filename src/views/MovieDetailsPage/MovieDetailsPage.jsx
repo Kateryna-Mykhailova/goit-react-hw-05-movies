@@ -36,9 +36,13 @@ useEffect(() => {
     }, [movieId])
 
 // console.log(movieDetails);
-  const onGoBack = () =>{
-      location?.state?.from ? navigate(-1) : navigate("/")
-  }
+  const onGoBack = () => {
+  //  if(location?.state?.from?.search !== ''){navigate(`/movies${location.state.from}`)}  
+    // location?.state?.from?.search !== '' ? navigate(`/movies${location.state.from.search}`) : navigate(-1)
+    // if (`/movies/${movieId}/cast` && `/movies/${movieId}/reviews`) {navigate(-2)  }
+    // location?.state?.from ? navigate(-1) : navigate("/")
+     navigate( location?.state?.from ?? "/")
+   }
 
   
     return (
@@ -65,11 +69,17 @@ useEffect(() => {
                 <ul>
                     <li><Link
                     to={`/movies/${movieId}/cast`}
-                    key={movieId}
+              key={movieId}
+              state={location.state}
+              // state={{ from: location }}
+
+              
                 >Cast </Link></li>
                     <li><Link
                     to={`/movies/${movieId}/reviews`}
-                    key={movieId}
+              key={movieId}
+              // state={{ from: location }}
+              state={location.state}
                 >Reviews </Link></li>
                     <Outlet/>
                 </ul>

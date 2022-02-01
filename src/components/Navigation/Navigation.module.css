@@ -1,7 +1,14 @@
-/* .Navigation_activeLink {
-  color: rgb(211, 29, 29);
-} */
-
 .Navigation_link {
-  color: rgb(50, 173, 46);
+  color: rgb(20, 53, 19);
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 800;
+  font-size: 25px;
+}
+.Navigation_container {
+  display: inline-block;
+}
+
+.Navigation {
+  background-color: cadetblue;
 }

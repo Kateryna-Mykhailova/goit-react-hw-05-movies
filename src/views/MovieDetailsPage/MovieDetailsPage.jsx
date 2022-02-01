@@ -1,8 +1,8 @@
 
-import { useParams, NavLink, Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
-
+import { useParams, Link, Outlet, useLocation, useNavigate} from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import searchApi from '../../services/api'
+import styles from '../MovieDetailsPage/MovieDetailsPage.module.css'
 
 export default function MovieDetailsPage() {
     const [movieDetails, setMovieDetails] = useState(null)
@@ -36,14 +36,12 @@ useEffect(() => {
     // location?.state?.from ? navigate(-1) : navigate("/")
      navigate( location?.state?.from ?? "/")
    }
-
   
     return (
       <>
-        
-        {movieDetails && (<div >
-          <button type='button' onClick={onGoBack}>Go Back</button>
-            <img  src={movieDetails.src} alt={movieDetails.title} />
+        {movieDetails && (<div className={styles.Movie_container}>
+          <button type='button' onClick={onGoBack} className={styles.GoBackBtn}>Go Back</button>
+            <img  src={movieDetails.src} alt={movieDetails.title}  />
             <div >
               <h2 >{movieDetails.title}</h2>
               <h3 >User Score</h3>
@@ -60,20 +58,16 @@ useEffect(() => {
             </div>)}
             <nav>
                 <ul>
-                    <li><Link
+                    <li className={styles.List_item}><Link className={styles.Link}
                     to={`/movies/${movieId}/cast`}
-              key={movieId}
-              state={location.state}
-              // state={{ from: location }}
-
-              
-                >Cast </Link></li>
-                    <li><Link
+                    key={movieId}
+                    state={location.state}>
+                    Cast </Link></li>
+                    <li className={styles.List_item}><Link className={styles.Link}
                     to={`/movies/${movieId}/reviews`}
-              key={movieId}
-              // state={{ from: location }}
-              state={location.state}
-                >Reviews </Link></li>
+                    key={movieId}
+                    state={location.state}>
+                    Reviews </Link></li>
                     <Outlet/>
                 </ul>
                 

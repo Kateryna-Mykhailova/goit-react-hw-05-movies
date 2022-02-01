@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import searchApi from '../../services/api'
 import SearchBar from "../../components/SearchBar/SearchBar";
 import MoviesList from '../../components/MoviesList/MoviesList'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MoviesPage() {
  const [movies, setMovies] = useState([]);
@@ -26,28 +28,32 @@ export default function MoviesPage() {
             .fetchSearchMovie(query)
             .then(({ results }) => {
                 if (results.length === 0) {
-                    setError(`No results were found for ${query}!`);
+                     toast.error(`No results were found for ${query}!`);
                     return;
                 }
                 setMovies(results);
-                // setSearchQuery(query)
             })
             .catch(error => setError(error.message))
-        
       }, [query]);
     
-    
-    
+
   return (
     <>
-      <SearchBar
-        
-        onSubmit={onSubmit}
-      />
+      <SearchBar onSubmit={onSubmit} />
      { movies && (
           <MoviesList movies={movies} />
-      )}
-    </>
+          )}
+          <ToastContainer theme="dark"
+            position="top-right"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover/>
+         </>
   );
 }
 

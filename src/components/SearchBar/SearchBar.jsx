@@ -1,34 +1,42 @@
 import { useState } from 'react';
-import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from 'react-icons/ai';
-import { toast } from 'react-toastify';
 import styles from '../SearchBar/Searchbar.module.css';
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+  
 
 export default function SearchBar({ onSubmit }) {
+
   const [searchQuery, setSearchQuery] = useState('')
-  const location = useLocation();
-  const navigation = useNavigate();
 
   const handleChange = e => {
     setSearchQuery(e.currentTarget.value.toLowerCase());
   };
 
-
   const handleSubmit = e => {
     e.preventDefault();
     if (searchQuery.trim() === '') {
-      //   alert('Enter a search name')
-      <p>Enter a search name</p>
-      // toast.warn('Enter a search name');
+      toast('Enter a search name');
       return;
     }
     onSubmit(searchQuery);
   };
 
- 
-
   return (
     <header className={styles.Searchbar}>
+      
+      <ToastContainer theme="dark"
+       position="top-right"
+       autoClose={4000}
+       hideProgressBar={false}
+       newestOnTop={false}
+       closeOnClick
+       rtl={false}
+       pauseOnFocusLoss
+       draggable
+       pauseOnHover/>
+     
       <form onSubmit={handleSubmit} className={styles.SearchForm}>
         <button type="submit" className={styles.SearchForm_button}>
           <AiOutlineSearch />

@@ -1,0 +1,42 @@
+.GoBackBtn {
+  height: 35px;
+  width: 85px;
+  color: rgb(17, 47, 48);
+  background-color: rgb(93, 128, 129);
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+}
+
+.List_item {
+  text-decoration: none;
+  list-style-type: none;
+  margin-bottom: 3px;
+  font-size: 20px;
+  margin-left: 0;
+  list-style-type: none;
+  color: #03191a;
+}
+
+.Movie_container {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.Link {
+  /* text-decoration: none; */
+  /* list-style-type: none; */
+  font-size: 22px;
+  font-weight: 700;
+  color: rgb(56, 138, 9);
+}
+
+.Link:hover {
+  display: block;
+  border-radius: 5px;
+  color: rgb(34, 83, 5);
+  background-color: rgba(64, 85, 76, 0.281);
+}

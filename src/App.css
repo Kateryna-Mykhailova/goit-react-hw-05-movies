@@ -1,12 +1,3 @@
-/* .App {
-  display: block;
-  width: 400px;
-  /* text-align: center; */
-/* margin-left: auto;
-  margin-right: auto; */
-/* padding: 25px; */
-/* } */
-
 .App {
   display: grid;
   grid-template-columns: 1fr;

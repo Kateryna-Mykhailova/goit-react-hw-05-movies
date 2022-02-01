@@ -1,30 +1,31 @@
 import { useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineSearch } from 'react-icons/ai';
 import { toast } from 'react-toastify';
-import styles from '../Searchbar/Searchbar.module.css';
+import styles from '../SearchBar/Searchbar.module.css';
 
-export default function Searchbar({ onSubmit }) {
-  const [searchName, setSearchName] = useState('');
+export default function SearchBar({ onSubmit, query, changeQuery }) {
+  
+    const location = useLocation();
+  const navigation = useNavigate();
 
   const handleChange = e => {
-    setSearchName(e.currentTarget.value.toLowerCase());
+    changeQuery(e.currentTarget.value.toLowerCase());
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    if (searchName.trim() === '') {
+    if (query.trim() === '') {
       //   alert('Enter a search name')
       toast.warn('Enter a search name');
       return;
     }
-    onSubmit(searchName);
-    resetForm();
+    onSubmit(query);
+    navigation({ ...location, search: `query=${query}` })
+    console.log(location);
   };
 
-  const resetForm = () => {
-    setSearchName('');
-  };
+ 
 
   return (
     <header className={styles.Searchbar}>
@@ -39,8 +40,8 @@ export default function Searchbar({ onSubmit }) {
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Search images and photos"
-          value={searchName}
+          placeholder="Search"
+          value={query}
           onChange={handleChange}
         />
       </form>

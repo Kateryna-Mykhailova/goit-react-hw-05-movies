@@ -41,11 +41,24 @@ function fetchCast(movieId) {
     return Promise.reject(new Error(`There is no information for this query`));
   });
 }
+
+function fetchSearchMovie(query) {
+  return fetch(
+    `https://api.themoviedb.org/3/search/movie?api_key=30d28e0664c735075082dfc414f074e3&language=en-US&query=${query}&page=1&include_adult=false`,
+  ).then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    return Promise.reject(new Error(`There is no information for this query`));
+  });
+}
+
 const api = {
   fetchMovies,
   fetchMovieDetails,
   fetchReviews,
   fetchCast,
+  fetchSearchMovie,
 };
 
 export default api;

@@ -23,19 +23,12 @@ useEffect(() => {
                   genres,
                   }
             )}
-        //   .then(({results}) => {
-        //       setMovieDetails(results);
-        //     //   setTrendingMovies(data.results);
-        //       console.log(movieDetails);
-        //       console.log(results);
-        //   }
-       
         )
         .catch(error => console.log(error));
       return;
     }, [movieId])
 
-// console.log(movieDetails);
+
   const onGoBack = () => {
   //  if(location?.state?.from?.search !== ''){navigate(`/movies${location.state.from}`)}  
     // location?.state?.from?.search !== '' ? navigate(`/movies${location.state.from.search}`) : navigate(-1)
@@ -83,24 +76,6 @@ useEffect(() => {
                 >Reviews </Link></li>
                     <Outlet/>
                 </ul>
-    
-                
-                
-      {/* <NavLink
-              to={{ 
-                pathname:,
-                state: {
-                  from: history.location.state.from,
-                  label: "back to movies from cast",
-                },
-              }}
-         style={({ isActive }) => {
-               return {
-               display: "block",
-               margin: "1rem 0",
-              color: isActive ? "red" : "" }}}
-            >Cast</NavLink> */}
-                
                 
       </nav>
         </>

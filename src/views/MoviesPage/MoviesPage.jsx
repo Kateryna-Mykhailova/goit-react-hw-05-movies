@@ -18,7 +18,6 @@ export default function MoviesPage() {
 
     const onSubmit = (searchQuery) => {
         navigation({ ...location, search: `query=${searchQuery}` })
-        console.log(location);
     };
    
   useEffect(() => {

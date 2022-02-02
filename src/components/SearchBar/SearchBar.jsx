@@ -4,7 +4,7 @@ import styles from '../SearchBar/Searchbar.module.css';
 import React from 'react';
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-  
+import PropTypes from "prop-types";
 
 export default function SearchBar({ onSubmit }) {
 
@@ -17,7 +17,7 @@ export default function SearchBar({ onSubmit }) {
   const handleSubmit = e => {
     e.preventDefault();
     if (searchQuery.trim() === '') {
-      toast('Enter a search name');
+      toast('Enter something to search for');
       return;
     }
     onSubmit(searchQuery);
@@ -57,3 +57,6 @@ export default function SearchBar({ onSubmit }) {
   );
 }
 
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func,
+};

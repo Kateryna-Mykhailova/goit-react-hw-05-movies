@@ -5,11 +5,10 @@ import searchApi from '../../services/api'
 import styles from '../MovieDetailsPage/MovieDetailsPage.module.css'
 
 export default function MovieDetailsPage() {
-    const [movieDetails, setMovieDetails] = useState(null)
+  const [movieDetails, setMovieDetails] = useState(null)
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
-    const { movieId } = useParams();
+  const { movieId } = useParams();
 useEffect(() => {
 
       searchApi
@@ -28,12 +27,7 @@ useEffect(() => {
       return;
     }, [movieId])
 
-
   const onGoBack = () => {
-  //  if(location?.state?.from?.search !== ''){navigate(`/movies${location.state.from}`)}  
-    // location?.state?.from?.search !== '' ? navigate(`/movies${location.state.from.search}`) : navigate(-1)
-    // if (`/movies/${movieId}/cast` && `/movies/${movieId}/reviews`) {navigate(-2)  }
-    // location?.state?.from ? navigate(-1) : navigate("/")
      navigate( location?.state?.from ?? "/")
    }
   
